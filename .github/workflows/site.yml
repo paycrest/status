@@ -6,14 +6,20 @@
 # Do NOT let `update-template.yml` regenerate this file — that workflow has
 # been disabled in this repo for exactly this reason.
 #
-# Rebuilds fire on pushes to history/summary.json (written once per uptime
-# run by summary.yml, ~every 5 min) — not on every individual service status
-# commit, which would multiply builds ~10x per uptime run.
+# Triggers:
+#   - schedule: every 5 min so the "Last checked" timestamp stays fresh
+#     even when no history data actually changes.
+#   - push: on master for merges that touch the site, workflow, or data.
+#   - repository_dispatch / workflow_dispatch: escape hatches.
+#
+# Each build stamps BUILD_TIME into the generated HTML so peaceiris always
+# sees a diff and pushes a new gh-pages commit — that in turn triggers the
+# built-in "pages build and deployment" workflow.
 
 name: Static Site CI
 on:
   schedule:
-    - cron: "0 1 * * *"
+    - cron: "*/5 * * * *"
   repository_dispatch:
     types: [static_site]
   workflow_dispatch:
@@ -50,7 +56,11 @@ jobs:
         working-directory: site
         env:
           SITE_BASE: /status
-        run: npm run build
+          BUILD_TIME: ${{ github.event.repository.updated_at }}
+        run: |
+          export BUILD_TIME="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "BUILD_TIME=$BUILD_TIME"
+          npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
