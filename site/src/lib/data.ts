@@ -37,7 +37,30 @@ export interface HistoryEntry {
 export function loadSummary(): SiteSummary[] {
   const file = join(ROOT, "history", "summary.json");
   const raw = readFileSync(file, "utf8");
-  return JSON.parse(raw) as SiteSummary[];
+  const sites = JSON.parse(raw) as SiteSummary[];
+  return sortSites(sites);
+}
+
+// Display order independent of summary.json's order — summary.json is only
+// regenerated daily by summary.yml, so reordering .upptimerc.yml alone
+// wouldn't change what the page shows until the next regeneration.
+const DISPLAY_ORDER = [
+  "aggregator",
+  "noblocks",
+  "noblocks-rates",
+  "nibbs-funds-transfer",
+  "nibbs-transaction-status-query",
+  "nibbs-name-enquiry",
+  "dashboard",
+  "landing-page",
+];
+
+function sortSites(sites: SiteSummary[]): SiteSummary[] {
+  const rank = (slug: string) => {
+    const i = DISPLAY_ORDER.indexOf(slug);
+    return i === -1 ? DISPLAY_ORDER.length : i;
+  };
+  return [...sites].sort((a, b) => rank(a.slug) - rank(b.slug));
 }
 
 export function loadHistory(slug: string): HistoryEntry | null {
