@@ -1,0 +1,24 @@
+---
+import type { Incident } from "../lib/data";
+
+interface Props {
+  incidents: Incident[];
+}
+
+const { incidents } = Astro.props;
+---
+
+<div class="incidents">
+  {
+    incidents.length === 0 ? (
+      <p class="empty">No incidents reported in the last 90 days.</p>
+    ) : (
+      incidents.map((i) => (
+        <div class="incident">
+          <p class="incident-title">{i.title}</p>
+          {i.date && <span class="incident-date">{i.date}</span>}
+        </div>
+      ))
+    )
+  }
+</div>

@@ -1,0 +1,83 @@
+---
+import "../styles/global.css";
+import StatusBanner from "../components/StatusBanner.astro";
+import ServiceRow from "../components/ServiceRow.astro";
+import IncidentList from "../components/IncidentList.astro";
+import {
+  loadSummary,
+  loadHistory,
+  loadIncidents,
+  deriveOverallStatus,
+} from "../lib/data";
+
+const sites = loadSummary();
+const overall = deriveOverallStatus(sites);
+const incidents = loadIncidents();
+
+// Find the most recent lastUpdated timestamp across all sites.
+const lastChecked = sites
+  .map((s) => loadHistory(s.slug)?.lastUpdated)
+  .filter((v): v is string => !!v)
+  .sort()
+  .pop();
+
+const lastCheckedLabel = lastChecked
+  ? new Date(lastChecked).toLocaleString(undefined, {
+      dateStyle: "medium",
+      timeStyle: "short",
+    })
+  : "just now";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (p: string) => `${base.replace(/\/$/, "")}/${p.replace(/^\//, "")}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paycrest Status</title>
+    <meta
+      name="description"
+      content="Real-time status of Paycrest services and infrastructure."
+    />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" type="image/svg+xml" href={withBase("favicon.svg")} />
+  </head>
+  <body>
+    <div class="container">
+      <header class="site-header">
+        <a class="brand" href={base}>
+          <img
+            src="https://avatars.githubusercontent.com/u/128634635?s=200&v=4"
+            alt="Paycrest"
+          />
+          <span>Paycrest Status</span>
+        </a>
+        <nav class="nav">
+          <a href="https://paycrest.io">Website</a>
+          <a href="https://docs.paycrest.io">Docs</a>
+        </nav>
+      </header>
+
+      <StatusBanner overall={overall} lastChecked={lastCheckedLabel} />
+
+      <h2 class="section-title">Services</h2>
+      <section class="services">
+        {sites.map((site) => <ServiceRow site={site} />)}
+      </section>
+
+      <h2 class="section-title">Recent incidents</h2>
+      <IncidentList incidents={incidents} />
+
+      <footer>
+        <p>
+          Monitored every 5 minutes · Data powered by <a
+            href="https://github.com/upptime/upptime">Upptime</a
+          >
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+---
+import type { OverallStatus } from "../lib/data";
+import { statusLabel } from "../lib/data";
+
+interface Props {
+  overall: OverallStatus;
+  lastChecked: string;
+}
+
+const { overall, lastChecked } = Astro.props;
+const label = statusLabel(overall);
+---
+
+<div class={`banner ${overall}`}>
+  <span class="banner-indicator" aria-hidden="true"></span>
+  <div class="banner-text">
+    <span class="banner-title">{label}</span>
+    <span class="banner-sub">Last checked {lastChecked}</span>
+  </div>
+</div>
