@@ -22,10 +22,11 @@ const lastChecked = sites
   .pop();
 
 const lastCheckedLabel = lastChecked
-  ? new Date(lastChecked).toLocaleString(undefined, {
+  ? new Date(lastChecked).toLocaleString("en-GB", {
       dateStyle: "medium",
       timeStyle: "short",
-    })
+      timeZone: "Africa/Lagos",
+    }) + " GMT+1"
   : "just now";
 
 const base = import.meta.env.BASE_URL;
