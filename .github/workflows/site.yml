@@ -5,6 +5,10 @@
 #
 # Do NOT let `update-template.yml` regenerate this file — that workflow has
 # been disabled in this repo for exactly this reason.
+#
+# Rebuilds fire on pushes to history/summary.json (written once per uptime
+# run by summary.yml, ~every 5 min) — not on every individual service status
+# commit, which would multiply builds ~10x per uptime run.
 
 name: Static Site CI
 on:
@@ -16,7 +20,7 @@ on:
   push:
     branches: [master]
     paths:
-      - "history/**"
+      - "history/summary.json"
       - "site/**"
       - ".github/workflows/site.yml"
 
@@ -24,7 +28,6 @@ jobs:
   build-and-deploy:
     name: Build and deploy site
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
