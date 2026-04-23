@@ -1,0 +1,53 @@
+---
+import type { SiteSummary } from "../lib/data";
+import { formatMs } from "../lib/data";
+import UptimeBars from "./UptimeBars.astro";
+
+interface Props {
+  site: SiteSummary;
+}
+
+const { site } = Astro.props;
+const statusText =
+  site.status === "up"
+    ? "Operational"
+    : site.status === "degraded"
+      ? "Degraded"
+      : "Outage";
+const isPaycrestDomain = /paycrest\.io|noblocks\.xyz/.test(site.url);
+const displayUrl = isPaycrestDomain ? site.url : null;
+---
+
+<article class="service">
+  <div class="service-head">
+    <div>
+      <div class="service-name">{site.name}</div>
+      {displayUrl && <div class="service-url">{displayUrl}</div>}
+    </div>
+  </div>
+  <div class={`service-status`}>
+    <span class={`dot ${site.status}`} aria-hidden="true"></span>
+    <span class={`status-text ${site.status}`}>{statusText}</span>
+  </div>
+
+  <UptimeBars site={site} days={90} />
+
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric-label">24h</span>
+      <span class="metric-value">{site.uptimeDay}</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">7d</span>
+      <span class="metric-value">{site.uptimeWeek}</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">30d</span>
+      <span class="metric-value">{site.uptimeMonth}</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">Response</span>
+      <span class="metric-value">{formatMs(site.time)}</span>
+    </div>
+  </div>
+</article>
