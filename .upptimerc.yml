@@ -31,9 +31,22 @@ sites:
       - 301
 
   - name: NIBBS (Funds Transfer)
-    url: https://nibssplc.freshstatus.io
+    url: https://public-api.freshstatus.io/v1/public-components/?account_id=21373
     expectedStatusCodes:
       - 200
+    __dangerous__body_down_if_text_missing: '"id":180641,"name":"Funds Transfer (FT)","description":"","order":1,"group_id":31463,"display_options":{"service_start_date":"","uptime_history_enabled":"true"},"status":"OP"'
+
+  - name: NIBBS (Transaction Status Query)
+    url: https://public-api.freshstatus.io/v1/public-components/?account_id=21373
+    expectedStatusCodes:
+      - 200
+    __dangerous__body_down_if_text_missing: '"id":180644,"name":"Transaction Status Query (TSQ)","description":"","order":2,"group_id":31463,"display_options":{"service_start_date":"","uptime_history_enabled":"true"},"status":"OP"'
+
+  - name: NIBBS (Name Enquiry)
+    url: https://public-api.freshstatus.io/v1/public-components/?account_id=21373
+    expectedStatusCodes:
+      - 200
+    __dangerous__body_down_if_text_missing: '"id":181552,"name":"Name Enquiry (NE)","description":"","order":3,"group_id":31463,"display_options":{"service_start_date":"","uptime_history_enabled":"true"},"status":"OP"'
 
 status-website:
   cname: status.paycrest.io # Replace with your custom domain, or remove if not using one
