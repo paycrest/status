@@ -1,23 +1,5 @@
 [
   {
-    "name": "Landing page",
-    "url": "https://paycrest.io",
-    "icon": "https://icons.duckduckgo.com/ip3/paycrest.io.ico",
-    "slug": "landing-page",
-    "status": "up",
-    "uptime": "100.00%",
-    "uptimeDay": "100.00%",
-    "uptimeWeek": "100.00%",
-    "uptimeMonth": "100.00%",
-    "uptimeYear": "100.00%",
-    "time": 352,
-    "timeDay": 352,
-    "timeWeek": 352,
-    "timeMonth": 352,
-    "timeYear": 352,
-    "dailyMinutesDown": {}
-  },
-  {
     "name": "Aggregator",
     "url": "https://api.paycrest.io/health",
     "icon": "https://icons.duckduckgo.com/ip3/api.paycrest.io.ico",
@@ -33,24 +15,6 @@
     "timeWeek": 719,
     "timeMonth": 719,
     "timeYear": 719,
-    "dailyMinutesDown": {}
-  },
-  {
-    "name": "Dashboard",
-    "url": "https://app.paycrest.io",
-    "icon": "https://icons.duckduckgo.com/ip3/app.paycrest.io.ico",
-    "slug": "dashboard",
-    "status": "up",
-    "uptime": "100.00%",
-    "uptimeDay": "100.00%",
-    "uptimeWeek": "100.00%",
-    "uptimeMonth": "100.00%",
-    "uptimeYear": "100.00%",
-    "time": 1230,
-    "timeDay": 1230,
-    "timeWeek": 1230,
-    "timeMonth": 1230,
-    "timeYear": 1230,
     "dailyMinutesDown": {}
   },
   {
@@ -141,6 +105,42 @@
     "timeWeek": 128,
     "timeMonth": 128,
     "timeYear": 128,
+    "dailyMinutesDown": {}
+  },
+  {
+    "name": "Dashboard",
+    "url": "https://app.paycrest.io",
+    "icon": "https://icons.duckduckgo.com/ip3/app.paycrest.io.ico",
+    "slug": "dashboard",
+    "status": "up",
+    "uptime": "100.00%",
+    "uptimeDay": "100.00%",
+    "uptimeWeek": "100.00%",
+    "uptimeMonth": "100.00%",
+    "uptimeYear": "100.00%",
+    "time": 1230,
+    "timeDay": 1230,
+    "timeWeek": 1230,
+    "timeMonth": 1230,
+    "timeYear": 1230,
+    "dailyMinutesDown": {}
+  },
+  {
+    "name": "Landing page",
+    "url": "https://paycrest.io",
+    "icon": "https://icons.duckduckgo.com/ip3/paycrest.io.ico",
+    "slug": "landing-page",
+    "status": "up",
+    "uptime": "100.00%",
+    "uptimeDay": "100.00%",
+    "uptimeWeek": "100.00%",
+    "uptimeMonth": "100.00%",
+    "uptimeYear": "100.00%",
+    "time": 352,
+    "timeDay": 352,
+    "timeWeek": 352,
+    "timeMonth": 352,
+    "timeYear": 352,
     "dailyMinutesDown": {}
   }
 ]
