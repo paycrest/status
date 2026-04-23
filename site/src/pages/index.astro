@@ -14,20 +14,24 @@ const sites = loadSummary();
 const overall = deriveOverallStatus(sites);
 const incidents = loadIncidents();
 
-// Find the most recent lastUpdated timestamp across all sites.
-const lastChecked = sites
+// "Last checked" reflects the most recent of: the CI build time (set by
+// site.yml on every 5-min cron) and the latest `lastUpdated` from any
+// monitored service's history file. Whichever is newer wins — this keeps
+// the timestamp fresh even if upstream uptime.yml briefly lags.
+const buildTime = process.env.BUILD_TIME ?? new Date().toISOString();
+const latestDataTime = sites
   .map((s) => loadHistory(s.slug)?.lastUpdated)
   .filter((v): v is string => !!v)
   .sort()
   .pop();
+const lastChecked =
+  latestDataTime && latestDataTime > buildTime ? latestDataTime : buildTime;
 
-const lastCheckedLabel = lastChecked
-  ? new Date(lastChecked).toLocaleString("en-GB", {
-      dateStyle: "medium",
-      timeStyle: "short",
-      timeZone: "Africa/Lagos",
-    }) + " GMT+1"
-  : "just now";
+const lastCheckedLabel = new Date(lastChecked).toLocaleString("en-GB", {
+  dateStyle: "medium",
+  timeStyle: "short",
+  timeZone: "Africa/Lagos",
+}) + " GMT+1";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (p: string) => `${base.replace(/\/$/, "")}/${p.replace(/^\//, "")}`;
