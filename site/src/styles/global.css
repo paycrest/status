@@ -199,6 +199,7 @@ a:hover {
   font-weight: 500;
   letter-spacing: -0.01em;
   color: var(--fg);
+  margin-bottom: 6px;
 }
 
 .service-url {
