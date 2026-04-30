@@ -1,35 +1,46 @@
 ---
 import type { SiteSummary } from "../lib/data";
-import { dayKeys, dayStatus, monitoringStartDay } from "../lib/data";
+import {
+  recentCandleSlots,
+  candleStatusForSlot,
+  monitoringStartMs,
+  formatSlotLabel,
+} from "../lib/data";
 
 interface Props {
   site: SiteSummary;
-  days?: number;
+  candles?: number;
 }
 
-const { site, days = 90 } = Astro.props;
-const startDay = monitoringStartDay(site.slug);
-const keys = dayKeys(days);
-const cells = keys.map((d) => ({ day: d, state: dayStatus(site, d, startDay) }));
-const firstLabel = new Date(keys[0]).toLocaleDateString(undefined, {
-  month: "short",
-  day: "numeric",
-});
-const lastLabel = "Today";
+// 96 candles × 15 min = 24h. Each candle reflects the latest known status
+// at-or-before its 15-min slot end.
+const { site, candles = 96 } = Astro.props;
+const startMs = monitoringStartMs(site.slug);
+const slots = recentCandleSlots(candles);
+const cells = slots.map((slotMs) => ({
+  slotMs,
+  state: candleStatusForSlot(site.slug, slotMs, startMs),
+}));
+const firstLabel = formatSlotLabel(slots[0]);
+const lastLabel = "Now";
 ---
 
-<div class="bars" role="img" aria-label={`${days}-day uptime for ${site.name}`}>
+<div
+  class="bars"
+  role="img"
+  aria-label={`Last ${candles * 15} minutes uptime for ${site.name}`}
+>
   {
     cells.map((c) => (
       <span
         class={`bar ${c.state}`}
-        title={`${c.day} — ${c.state === "up" ? "Operational" : c.state === "down" ? "Outage" : "Not yet monitored"}`}
+        title={`${formatSlotLabel(c.slotMs)} — ${c.state === "up" ? "Operational" : c.state === "down" ? "Outage" : c.state === "degraded" ? "Degraded" : "No data"}`}
       />
     ))
   }
 </div>
 <div class="bars-meta">
   <span>{firstLabel}</span>
-  <span>{site.uptimeMonth} uptime · past {days} days</span>
+  <span>{site.uptimeDay} uptime · past 24 hours</span>
   <span>{lastLabel}</span>
 </div>
