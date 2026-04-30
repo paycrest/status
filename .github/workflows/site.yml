@@ -40,6 +40,9 @@ jobs:
         with:
           ref: ${{ github.head_ref || github.ref }}
           token: ${{ secrets.GH_PAT || github.token }}
+          # Need full git history so the Astro build can derive 15-min
+          # uptime candles from `git log` of upptime-bot commits.
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
