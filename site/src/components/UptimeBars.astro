@@ -19,7 +19,7 @@ const startMs = monitoringStartMs(site.slug);
 const slots = recentCandleSlots(candles);
 const cells = slots.map((slotMs) => ({
   slotMs,
-  state: candleStatusForSlot(site.name, slotMs, startMs),
+  state: candleStatusForSlot(site.slug, slotMs, startMs),
 }));
 const firstLabel = formatSlotLabel(slots[0]);
 const lastLabel = "Now";
