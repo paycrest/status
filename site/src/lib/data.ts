@@ -154,15 +154,19 @@ export function monitoringStartDay(slug: string): string | null {
 // ---------------------------------------------------------------------------
 // 15-minute candles
 //
-// Each candle represents a 15-minute slot and reflects the most recent
-// upptime-bot status commit at or before that slot's start time. Upptime
-// only commits when status changes (or response time drifts past its
-// threshold), so we "fill forward" between commits — that's the only honest
-// thing we can show without a per-check time-series store.
+// Each candle represents a 15-minute slot whose status is the most recent
+// known status at-or-before the slot's end time (fill-forward).
 //
-// Source: parses `git log` for messages like
-//   `🟩 Landing page is up (200 in 521 ms) [skip ci] [upptime]`
-// and matches them against the human-readable site name from summary.json.
+// Two data sources are merged, slug-keyed:
+//   1. `data/checks/<slug>.ndjson` — one JSON line per uptime check,
+//      written by .github/scripts/append-check-log.mjs. This is the
+//      authoritative per-check time-series.
+//   2. `git log` of upptime-bot status commits — used as a fallback for
+//      services that don't yet have an NDJSON file (e.g. before this
+//      pipeline was introduced) and as a backfill for early history.
+//
+// Both sources are merged into a single sorted event list per slug, with
+// duplicate timestamps de-duped (NDJSON wins).
 
 export type CandleStatus = "up" | "down" | "degraded" | "unknown";
 
@@ -171,12 +175,32 @@ interface CandleEvent {
   status: CandleStatus;
 }
 
-let _eventsByName: Map<string, CandleEvent[]> | null = null;
+let _eventsBySlug: Map<string, CandleEvent[]> | null = null;
 
-function loadAllCandleEvents(): Map<string, CandleEvent[]> {
-  if (_eventsByName) return _eventsByName;
+function readNdjsonEvents(slug: string): CandleEvent[] {
+  const file = join(ROOT, "data", "checks", `${slug}.ndjson`);
+  if (!existsSync(file)) return [];
+  const events: CandleEvent[] = [];
+  for (const line of readFileSync(file, "utf8").split("\n")) {
+    if (!line.trim()) continue;
+    try {
+      const { ts, status } = JSON.parse(line) as {
+        ts: string;
+        status: string;
+      };
+      const tsMs = Date.parse(ts);
+      if (!Number.isFinite(tsMs)) continue;
+      if (status !== "up" && status !== "down" && status !== "degraded") continue;
+      events.push({ ts: tsMs, status });
+    } catch {
+      // skip malformed lines
+    }
+  }
+  return events;
+}
+
+function readGitLogEvents(nameToSlug: Map<string, string>): Map<string, CandleEvent[]> {
   const map = new Map<string, CandleEvent[]>();
-
   let raw = "";
   try {
     raw = execFileSync(
@@ -185,7 +209,6 @@ function loadAllCandleEvents(): Map<string, CandleEvent[]> {
       { cwd: ROOT, encoding: "utf8", maxBuffer: 64 * 1024 * 1024 },
     );
   } catch {
-    _eventsByName = map;
     return map;
   }
 
@@ -198,17 +221,43 @@ function loadAllCandleEvents(): Map<string, CandleEvent[]> {
     const m = msg.match(re);
     if (!m) continue;
     const [, , name, statusWord] = m;
-    const status = statusWord as CandleStatus;
+    const slug = nameToSlug.get(name);
+    if (!slug) continue;
     const ts = Date.parse(iso);
     if (!Number.isFinite(ts)) continue;
-    const list = map.get(name) ?? [];
-    list.push({ ts, status });
-    map.set(name, list);
+    const list = map.get(slug) ?? [];
+    list.push({ ts, status: statusWord as CandleStatus });
+    map.set(slug, list);
+  }
+  return map;
+}
+
+function loadAllCandleEvents(): Map<string, CandleEvent[]> {
+  if (_eventsBySlug) return _eventsBySlug;
+  const map = new Map<string, CandleEvent[]>();
+
+  // Build slug→NDJSON events first (authoritative).
+  const sites = loadSummary();
+  for (const site of sites) {
+    const events = readNdjsonEvents(site.slug);
+    if (events.length) map.set(site.slug, events);
+  }
+
+  // Merge in git-log events that aren't already covered (by exact ts).
+  const nameToSlug = new Map(sites.map((s) => [s.name, s.slug]));
+  const fromLog = readGitLogEvents(nameToSlug);
+  for (const [slug, logEvents] of fromLog.entries()) {
+    const existing = map.get(slug) ?? [];
+    const seenTs = new Set(existing.map((e) => e.ts));
+    for (const ev of logEvents) {
+      if (!seenTs.has(ev.ts)) existing.push(ev);
+    }
+    map.set(slug, existing);
   }
 
   // Sort each list ascending by timestamp.
   for (const list of map.values()) list.sort((a, b) => a.ts - b.ts);
-  _eventsByName = map;
+  _eventsBySlug = map;
   return map;
 }
 
@@ -223,14 +272,14 @@ export function recentCandleSlots(count: number): number[] {
 }
 
 export function candleStatusForSlot(
-  name: string,
+  slug: string,
   slotStartMs: number,
   monitoringStartMs: number | null,
 ): CandleStatus {
   if (monitoringStartMs !== null && slotStartMs + FIFTEEN_MIN_MS <= monitoringStartMs) {
     return "unknown";
   }
-  const events = loadAllCandleEvents().get(name);
+  const events = loadAllCandleEvents().get(slug);
   if (!events || events.length === 0) return "unknown";
   // Latest event with ts <= slotStartMs + FIFTEEN_MIN_MS (events that occur
   // within this slot still count — they're the slot's status).
