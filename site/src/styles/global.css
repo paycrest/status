@@ -339,25 +339,94 @@ a:hover {
   margin: 0;
 }
 
-.incident {
-  padding: 16px 0;
+.incident-day {
+  padding: 20px 0;
   border-bottom: 1px solid var(--border);
 }
 
-.incident:last-child {
-  border-bottom: none;
+.incident-day:first-child {
+  padding-top: 0;
 }
 
-.incident-title {
+.incident-day:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.incident-date-header {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--fg-muted);
+  margin: 0 0 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.incident {
+  margin: 0 0 20px;
+  padding: 0;
+  border: none;
+}
+
+.incident:last-child {
+  margin-bottom: 0;
+}
+
+.incident-headline {
   font-size: 14px;
   font-weight: 500;
-  margin: 0 0 4px;
+  color: var(--fg);
+  margin: 0 0 12px;
 }
 
-.incident-date {
+.incident-update {
+  position: relative;
+  padding-left: 14px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: var(--fg-muted);
+}
+
+.incident-update::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 2px;
+  height: 100%;
+  background: var(--border-strong);
+}
+
+.incident-update:last-child {
+  margin-bottom: 0;
+}
+
+.incident-update-label {
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.incident-update-label.resolved {
+  color: var(--green);
+}
+
+.incident-update-label.identified {
+  color: var(--red);
+}
+
+.incident-update-label.investigating {
+  color: var(--amber);
+}
+
+.incident-update-text {
+  color: var(--fg-muted);
+}
+
+.incident-update-time {
   font-size: 12px;
   color: var(--fg-dim);
   font-variant-numeric: tabular-nums;
+  margin-top: 2px;
 }
 
 footer {

@@ -1,23 +1,104 @@
 ---
 import type { Incident } from "../lib/data";
+import {
+  formatIncidentDate,
+  formatIncidentTime,
+  incidentDurationLabel,
+} from "../lib/data";
 
 interface Props {
   incidents: Incident[];
 }
 
 const { incidents } = Astro.props;
+
+// Group by the day the incident was identified (in GMT+1).
+const byDate = new Map<string, Incident[]>();
+for (const inc of incidents) {
+  const date = formatIncidentDate(inc.identifiedAt);
+  const list = byDate.get(date) ?? [];
+  list.push(inc);
+  byDate.set(date, list);
+}
+const groups = [...byDate.entries()];
 ---
 
 <div class="incidents">
   {
     incidents.length === 0 ? (
-      <p class="empty">No incidents reported in the last 90 days.</p>
+      <p class="empty">No incidents reported in the last 30 days.</p>
     ) : (
-      incidents.map((i) => (
-        <div class="incident">
-          <p class="incident-title">{i.title}</p>
-          {i.date && <span class="incident-date">{i.date}</span>}
-        </div>
+      groups.map(([date, list]) => (
+        <section class="incident-day">
+          <h3 class="incident-date-header">{date}</h3>
+          {list.map((inc) => {
+            const headline =
+              inc.status === "down"
+                ? `${inc.serviceName} — Service disruption`
+                : `${inc.serviceName} — Degraded performance`;
+            const duration = incidentDurationLabel(
+              inc.identifiedAt,
+              inc.resolvedAt,
+            );
+            return (
+              <article class="incident">
+                <h4 class="incident-headline">{headline}</h4>
+                {inc.resolvedAt !== null ? (
+                  <>
+                    <div class="incident-update">
+                      <span class="incident-update-label resolved">
+                        Resolved
+                      </span>
+                      <span class="incident-update-text">
+                        — Service restored after {duration}.
+                      </span>
+                      <div class="incident-update-time">
+                        {formatIncidentTime(inc.resolvedAt)}
+                      </div>
+                    </div>
+                    <div class="incident-update">
+                      <span class="incident-update-label identified">
+                        Identified
+                      </span>
+                      <span class="incident-update-text">
+                        —{" "}
+                        {inc.status === "down" ? "Outage" : "Degradation"}{" "}
+                        detected.
+                      </span>
+                      <div class="incident-update-time">
+                        {formatIncidentTime(inc.identifiedAt)}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div class="incident-update">
+                      <span class="incident-update-label investigating">
+                        Investigating
+                      </span>
+                      <span class="incident-update-text">
+                        — Ongoing for {duration}.
+                      </span>
+                    </div>
+                    <div class="incident-update">
+                      <span class="incident-update-label identified">
+                        Identified
+                      </span>
+                      <span class="incident-update-text">
+                        —{" "}
+                        {inc.status === "down" ? "Outage" : "Degradation"}{" "}
+                        detected.
+                      </span>
+                      <div class="incident-update-time">
+                        {formatIncidentTime(inc.identifiedAt)}
+                      </div>
+                    </div>
+                  </>
+                )}
+              </article>
+            );
+          })}
+        </section>
       ))
     )
   }
