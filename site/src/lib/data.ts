@@ -72,30 +72,104 @@ export function loadHistory(slug: string): HistoryEntry | null {
 
 export interface Incident {
   slug: string;
-  title: string;
-  date: string;
-  body?: string;
+  serviceName: string;
+  identifiedAt: number; // ms since epoch
+  resolvedAt: number | null; // null while ongoing
+  status: "down" | "degraded";
 }
 
+const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
+
+// Derive incidents from per-service candle events: walk each service's
+// timeline ascending, opening an incident when status leaves "up" and
+// closing it on the next "up" event. Multiple drops within the same
+// disruption window collapse into one incident with the worst status seen.
+//
+// Filters to incidents whose identifiedAt is within the last 30 days.
 export function loadIncidents(): Incident[] {
-  const dir = join(ROOT, "history");
-  if (!existsSync(dir)) return [];
-  const files = readdirSync(dir).filter(
-    (f) => f.endsWith(".md") && f !== "README.md",
-  );
-  return files
-    .map((f) => {
-      const body = readFileSync(join(dir, f), "utf8");
-      const titleMatch = body.match(/^#\s+(.+)$/m);
-      const dateMatch = body.match(/\*\*Date\*\*:\s*(.+)/i);
-      return {
-        slug: f.replace(/\.md$/, ""),
-        title: titleMatch?.[1] ?? f,
-        date: dateMatch?.[1] ?? "",
-        body,
-      } satisfies Incident;
-    })
-    .sort((a, b) => (a.date < b.date ? 1 : -1));
+  const sites = loadSummary();
+  const slugToName = new Map(sites.map((s) => [s.slug, s.name]));
+  const eventsBySlug = loadAllCandleEvents();
+  const cutoff = Date.now() - THIRTY_DAYS_MS;
+
+  const incidents: Incident[] = [];
+
+  for (const [slug, events] of eventsBySlug.entries()) {
+    let open: { startTs: number; worst: "down" | "degraded" } | null = null;
+    for (const ev of events) {
+      if (ev.status === "up") {
+        if (open) {
+          if (open.startTs >= cutoff || ev.ts >= cutoff) {
+            incidents.push({
+              slug,
+              serviceName: slugToName.get(slug) ?? slug,
+              identifiedAt: open.startTs,
+              resolvedAt: ev.ts,
+              status: open.worst,
+            });
+          }
+          open = null;
+        }
+      } else if (ev.status === "down" || ev.status === "degraded") {
+        if (!open) {
+          open = { startTs: ev.ts, worst: ev.status };
+        } else if (ev.status === "down" && open.worst === "degraded") {
+          open.worst = "down";
+        }
+      }
+    }
+    if (open && open.startTs >= cutoff) {
+      incidents.push({
+        slug,
+        serviceName: slugToName.get(slug) ?? slug,
+        identifiedAt: open.startTs,
+        resolvedAt: null,
+        status: open.worst,
+      });
+    }
+  }
+
+  // Newest first.
+  incidents.sort((a, b) => b.identifiedAt - a.identifiedAt);
+  return incidents;
+}
+
+export function formatIncidentDate(ms: number): string {
+  return new Date(ms).toLocaleDateString("en-GB", {
+    timeZone: "Africa/Lagos",
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+}
+
+export function formatIncidentTime(ms: number): string {
+  // e.g. "Apr 19, 21:39 GMT+1"
+  const date = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Africa/Lagos",
+    day: "numeric",
+    month: "short",
+  }).format(new Date(ms));
+  const time = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Africa/Lagos",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(new Date(ms));
+  return `${date}, ${time} GMT+1`;
+}
+
+export function incidentDurationLabel(start: number, end: number | null): string {
+  const finishMs = end ?? Date.now();
+  const ms = Math.max(0, finishMs - start);
+  const minutes = Math.round(ms / 60_000);
+  if (minutes < 60) return `${minutes} min`;
+  const hours = Math.floor(minutes / 60);
+  const remMin = minutes % 60;
+  if (hours < 24) return remMin ? `${hours}h ${remMin}m` : `${hours}h`;
+  const days = Math.floor(hours / 24);
+  const remHours = hours % 24;
+  return remHours ? `${days}d ${remHours}h` : `${days}d`;
 }
 
 export type OverallStatus = "operational" | "degraded" | "outage";
