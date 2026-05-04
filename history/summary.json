@@ -23,11 +23,11 @@
     "icon": "https://icons.duckduckgo.com/ip3/noblocks.xyz.ico",
     "slug": "noblocks",
     "status": "up",
-    "uptime": "32.52%",
+    "uptime": "35.05%",
     "uptimeDay": "100.00%",
-    "uptimeWeek": "44.16%",
-    "uptimeMonth": "32.52%",
-    "uptimeYear": "32.52%",
+    "uptimeWeek": "50.20%",
+    "uptimeMonth": "35.05%",
+    "uptimeYear": "35.05%",
     "time": 151,
     "timeDay": 90,
     "timeWeek": 101,
@@ -140,9 +140,9 @@
     "url": "https://paycrest.io",
     "icon": "https://icons.duckduckgo.com/ip3/paycrest.io.ico",
     "slug": "landing-page",
-    "status": "up",
+    "status": "down",
     "uptime": "100.00%",
-    "uptimeDay": "100.00%",
+    "uptimeDay": "99.99%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
@@ -151,6 +151,8 @@
     "timeWeek": 363,
     "timeMonth": 364,
     "timeYear": 364,
-    "dailyMinutesDown": {}
+    "dailyMinutesDown": {
+      "2026-05-04": 0
+    }
   }
 ]
