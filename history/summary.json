@@ -23,11 +23,11 @@
     "icon": "https://icons.duckduckgo.com/ip3/noblocks.xyz.ico",
     "slug": "noblocks",
     "status": "up",
-    "uptime": "81.63%",
+    "uptime": "81.98%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "81.63%",
+    "uptimeYear": "81.98%",
     "time": 210,
     "timeDay": 157,
     "timeWeek": 635,
@@ -68,10 +68,10 @@
     "url": "https://public-api.freshstatus.io/v1/public-components/?account_id=21373",
     "icon": "https://icons.duckduckgo.com/ip3/public-api.freshstatus.io.ico",
     "slug": "nibbs-funds-transfer",
-    "status": "up",
+    "status": "down",
     "uptime": "100.00%",
-    "uptimeDay": "100.00%",
-    "uptimeWeek": "100.00%",
+    "uptimeDay": "99.92%",
+    "uptimeWeek": "99.99%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 269,
@@ -79,17 +79,19 @@
     "timeWeek": 294,
     "timeMonth": 269,
     "timeYear": 269,
-    "dailyMinutesDown": {}
+    "dailyMinutesDown": {
+      "2026-06-02": 1
+    }
   },
   {
     "name": "NIBBS (Transaction Status Query)",
     "url": "https://public-api.freshstatus.io/v1/public-components/?account_id=21373",
     "icon": "https://icons.duckduckgo.com/ip3/public-api.freshstatus.io.ico",
     "slug": "nibbs-transaction-status-query",
-    "status": "up",
+    "status": "down",
     "uptime": "100.00%",
-    "uptimeDay": "100.00%",
-    "uptimeWeek": "100.00%",
+    "uptimeDay": "99.95%",
+    "uptimeWeek": "99.99%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 93,
@@ -97,16 +99,18 @@
     "timeWeek": 86,
     "timeMonth": 95,
     "timeYear": 93,
-    "dailyMinutesDown": {}
+    "dailyMinutesDown": {
+      "2026-06-02": 1
+    }
   },
   {
     "name": "NIBBS (Name Enquiry)",
     "url": "https://public-api.freshstatus.io/v1/public-components/?account_id=21373",
     "icon": "https://icons.duckduckgo.com/ip3/public-api.freshstatus.io.ico",
     "slug": "nibbs-name-enquiry",
-    "status": "up",
+    "status": "down",
     "uptime": "100.00%",
-    "uptimeDay": "100.00%",
+    "uptimeDay": "99.99%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
@@ -115,7 +119,9 @@
     "timeWeek": 94,
     "timeMonth": 88,
     "timeYear": 88,
-    "dailyMinutesDown": {}
+    "dailyMinutesDown": {
+      "2026-06-02": 0
+    }
   },
   {
     "name": "Dashboard",
