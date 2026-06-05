@@ -1,7 +1,7 @@
 url: https://app.paycrest.io
-status: up
-code: 200
-responseTime: 1177
-lastUpdated: 2026-06-04T23:59:08.266Z
+status: down
+code: 500
+responseTime: 585
+lastUpdated: 2026-06-05T16:15:41.395Z
 startTime: 2026-04-23T05:56:33.336Z
 generator: Upptime <https://github.com/upptime/upptime>
