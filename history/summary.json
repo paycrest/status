@@ -13,7 +13,7 @@
     "time": 402,
     "timeDay": 291,
     "timeWeek": 327,
-    "timeMonth": 363,
+    "timeMonth": 365,
     "timeYear": 402,
     "dailyMinutesDown": {}
   },
@@ -23,11 +23,11 @@
     "icon": "https://icons.duckduckgo.com/ip3/noblocks.xyz.ico",
     "slug": "noblocks",
     "status": "up",
-    "uptime": "84.97%",
+    "uptime": "84.99%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "84.97%",
+    "uptimeYear": "84.99%",
     "time": 199,
     "timeDay": 364,
     "timeWeek": 162,
@@ -68,10 +68,10 @@
     "url": "https://public-api.freshstatus.io/v1/public-components/?account_id=21373",
     "icon": "https://icons.duckduckgo.com/ip3/public-api.freshstatus.io.ico",
     "slug": "nibbs-funds-transfer",
-    "status": "up",
+    "status": "down",
     "uptime": "100.00%",
-    "uptimeDay": "100.00%",
-    "uptimeWeek": "100.00%",
+    "uptimeDay": "99.92%",
+    "uptimeWeek": "99.99%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 278,
@@ -79,17 +79,19 @@
     "timeWeek": 314,
     "timeMonth": 281,
     "timeYear": 278,
-    "dailyMinutesDown": {}
+    "dailyMinutesDown": {
+      "2026-06-11": 1
+    }
   },
   {
     "name": "NIBBS (Transaction Status Query)",
     "url": "https://public-api.freshstatus.io/v1/public-components/?account_id=21373",
     "icon": "https://icons.duckduckgo.com/ip3/public-api.freshstatus.io.ico",
     "slug": "nibbs-transaction-status-query",
-    "status": "up",
+    "status": "down",
     "uptime": "100.00%",
-    "uptimeDay": "100.00%",
-    "uptimeWeek": "100.00%",
+    "uptimeDay": "99.96%",
+    "uptimeWeek": "99.99%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 94,
@@ -97,16 +99,18 @@
     "timeWeek": 97,
     "timeMonth": 96,
     "timeYear": 94,
-    "dailyMinutesDown": {}
+    "dailyMinutesDown": {
+      "2026-06-11": 1
+    }
   },
   {
     "name": "NIBBS (Name Enquiry)",
     "url": "https://public-api.freshstatus.io/v1/public-components/?account_id=21373",
     "icon": "https://icons.duckduckgo.com/ip3/public-api.freshstatus.io.ico",
     "slug": "nibbs-name-enquiry",
-    "status": "up",
+    "status": "down",
     "uptime": "100.00%",
-    "uptimeDay": "100.00%",
+    "uptimeDay": "99.99%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
@@ -115,7 +119,9 @@
     "timeWeek": 97,
     "timeMonth": 92,
     "timeYear": 91,
-    "dailyMinutesDown": {}
+    "dailyMinutesDown": {
+      "2026-06-11": 0
+    }
   },
   {
     "name": "Dashboard",
