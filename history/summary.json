@@ -4,18 +4,20 @@
     "url": "https://api.paycrest.io/health",
     "icon": "https://icons.duckduckgo.com/ip3/api.paycrest.io.ico",
     "slug": "aggregator",
-    "status": "down",
+    "status": "up",
     "uptime": "100.00%",
-    "uptimeDay": "100.00%",
-    "uptimeWeek": "100.00%",
-    "uptimeMonth": "100.00%",
+    "uptimeDay": "99.69%",
+    "uptimeWeek": "99.96%",
+    "uptimeMonth": "99.99%",
     "uptimeYear": "100.00%",
-    "time": 418,
-    "timeDay": 517,
-    "timeWeek": 519,
-    "timeMonth": 445,
-    "timeYear": 418,
-    "dailyMinutesDown": {}
+    "time": 417,
+    "timeDay": 461,
+    "timeWeek": 500,
+    "timeMonth": 441,
+    "timeYear": 417,
+    "dailyMinutesDown": {
+      "2026-06-29": 5
+    }
   },
   {
     "name": "Noblocks",
