@@ -6,7 +6,7 @@
     "slug": "aggregator",
     "status": "up",
     "uptime": "99.95%",
-    "uptimeDay": "96.87%",
+    "uptimeDay": "96.86%",
     "uptimeWeek": "99.55%",
     "uptimeMonth": "99.90%",
     "uptimeYear": "99.95%",
@@ -16,6 +16,7 @@
     "timeMonth": 434,
     "timeYear": 417,
     "dailyMinutesDown": {
+      "2026-06-30": 0,
       "2026-06-29": 45
     }
   },
@@ -25,11 +26,11 @@
     "icon": "https://icons.duckduckgo.com/ip3/noblocks.xyz.ico",
     "slug": "noblocks",
     "status": "up",
-    "uptime": "89.19%",
+    "uptime": "89.27%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "89.19%",
+    "uptimeYear": "89.27%",
     "time": 183,
     "timeDay": 81,
     "timeWeek": 101,
