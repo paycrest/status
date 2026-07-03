@@ -1,7 +1,7 @@
 url: https://api.paycrest.io/health
-status: down
-code: 503
-responseTime: 341
-lastUpdated: 2026-07-03T12:30:43.758Z
+status: up
+code: 200
+responseTime: 337
+lastUpdated: 2026-07-03T12:45:43.943Z
 startTime: 2026-04-23T05:56:32.120Z
 generator: Upptime <https://github.com/upptime/upptime>
