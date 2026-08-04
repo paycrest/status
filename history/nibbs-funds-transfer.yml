@@ -1,7 +1,7 @@
 url: https://public-api.freshstatus.io/v1/public-components/?account_id=21373
 status: down
 code: 200
-responseTime: 100
-lastUpdated: 2026-08-03T23:21:08.741Z
+responseTime: 362
+lastUpdated: 2026-08-04T23:20:37.137Z
 startTime: 2026-04-23T05:56:36.276Z
 generator: Upptime <https://github.com/upptime/upptime>
