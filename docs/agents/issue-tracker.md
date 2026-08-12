@@ -19,6 +19,10 @@ Use Jira for engineering work on this repo, for example:
 - Workflow or CI changes (excluding Upptime auto-generated incident issues)
 - Bugs in the status page build or monitor configuration
 
+**Ticket body:** use [ticket-spec-template.md](ticket-spec-template.md) (Engineering Working Agreement). **PRs** use [.github/pull_request_template.md](../../.github/pull_request_template.md) — that is separate from the ticket spec.
+
+Architecture or process decisions: [decision-record-template.md](decision-record-template.md).
+
 Do **not** use Jira for:
 
 - Live service outages (Upptime creates GitHub incident issues automatically)
@@ -44,7 +48,8 @@ Skills (`qa`, `triage`, `to-issues`): read this file before filing engineering i
 1. Set issue type: **Bug** or **Task** (see table above).
 2. Set **labels:** `repo-status` (required).
 3. Title: clear, actionable summary.
-4. Description: context, steps to reproduce (bugs), acceptance criteria (tasks).
+4. Description: fill [ticket-spec-template.md](ticket-spec-template.md) (user story, GIVEN/WHEN/THEN AC, money-safety if applicable).
+5. Add a **flowchart in a comment** when the change involves multi-step flows or navigation.
 
 Humans may also create tickets on the [KAN board](https://paycrest-io.atlassian.net/jira/software/projects/KAN/boards/1).
 
