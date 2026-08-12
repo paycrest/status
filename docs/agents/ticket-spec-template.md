@@ -2,7 +2,7 @@
 
 Copy this into the **Jira ticket description** when creating **engineering** work for the status repo. The ticket is the single source of truth — no spec, no build. Add a **flowchart in a Jira comment** when the change touches multi-step monitor or workflow flows.
 
-**Label:** `repo-status` (required)
+**Label:** `status` (required)
 
 **Note:** Upptime **operational** incidents and scheduled maintenance stay on **GitHub Issues** — do not use this template for live outages.
 
