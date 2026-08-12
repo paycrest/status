@@ -8,7 +8,7 @@ Paycrest **engineering** issues for the status repo are filed in **Jira**, not G
 
 - **Site:** [paycrest-io.atlassian.net](https://paycrest-io.atlassian.net) (cloud)
 - **Project:** KAN (Engineering)
-- **Repo label:** `repo-status` (required on every ticket for this repository)
+- **Repo label:** `status` (required on every ticket for this repository)
 
 ## When to create a Jira ticket
 
@@ -46,7 +46,7 @@ Use **Atlassian MCP** tools against cloud `paycrest-io.atlassian.net`, project *
 Skills (`qa`, `triage`, `to-issues`): read this file before filing engineering issues for status.
 
 1. Set issue type: **Bug** or **Task** (see table above).
-2. Set **labels:** `repo-status` (required).
+2. Set **labels:** `status` (required).
 3. Title: clear, actionable summary.
 4. Description: fill [ticket-spec-template.md](ticket-spec-template.md) (user story, GIVEN/WHEN/THEN AC, money-safety if applicable).
 5. Add a **flowchart in a comment** when the change involves multi-step flows or navigation.

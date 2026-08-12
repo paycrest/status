@@ -8,7 +8,7 @@ contact_links:
     about: "Please report security vulnerabilities here."
   - name: "Engineering issues (Jira KAN)"
     url: "https://paycrest-io.atlassian.net/jira/software/projects/KAN/boards/1"
-    about: "Engineering work on this repo — create in Jira with label repo-status."
+    about: "Engineering work on this repo — create in Jira with label status."
   - name: "Scheduled maintenance (Upptime)"
     url: "https://github.com/paycrest/status/issues/new?template=maintainance-event.md"
     about: "Schedule a maintenance window — operational GitHub issue (not Jira)."
