@@ -21,23 +21,19 @@ sites:
       - 200
       - 301
 
-  - name: NIBBS (Funds Transfer)
-    url: https://public-api.freshstatus.io/v1/public-components/?account_id=21373
+  # NIBSS retired the old freshstatus page. The new Netis-powered page
+  # (https://status.nibss-plc.com.ng/?system=nip) is backed by this JSON API.
+  # NIP status: success -> up, warning -> degraded, failure -> down.
+  # The server sends an incomplete TLS chain (no Sectigo intermediate), so
+  # peer verification fails in curl/Node; hence __dangerous__insecure.
+  - name: NIBSS (NIP)
+    url: https://status.nibss-plc.com.ng/api/status/summary
     expectedStatusCodes:
       - 200
-    __dangerous__body_down_if_text_missing: '"id":180641,"name":"Funds Transfer (FT)","description":"","order":1,"group_id":31463,"display_options":{"service_start_date":"","uptime_history_enabled":"true"},"status":"OP"'
-
-  - name: NIBBS (Transaction Status Query)
-    url: https://public-api.freshstatus.io/v1/public-components/?account_id=21373
-    expectedStatusCodes:
-      - 200
-    __dangerous__body_down_if_text_missing: '"id":180644,"name":"Transaction Status Query (TSQ)","description":"","order":2,"group_id":31463,"display_options":{"service_start_date":"","uptime_history_enabled":"true"},"status":"OP"'
-
-  - name: NIBBS (Name Enquiry)
-    url: https://public-api.freshstatus.io/v1/public-components/?account_id=21373
-    expectedStatusCodes:
-      - 200
-    __dangerous__body_down_if_text_missing: '"id":181552,"name":"Name Enquiry (NE)","description":"","order":3,"group_id":31463,"display_options":{"service_start_date":"","uptime_history_enabled":"true"},"status":"OP"'
+    __dangerous__insecure: true
+    __dangerous__body_down: '"system_id":"nip","status":"failure"'
+    __dangerous__body_degraded: '"system_id":"nip","status":"warning"'
+    __dangerous__body_down_if_text_missing: '"system_id":"nip","status":"'
 
   - name: Dashboard
     url: https://app.paycrest.io

@@ -49,9 +49,7 @@ const DISPLAY_ORDER = [
   "aggregator",
   "noblocks",
   "noblocks-rates",
-  "nibbs-funds-transfer",
-  "nibbs-transaction-status-query",
-  "nibbs-name-enquiry",
+  "nibss-nip",
   "dashboard",
   "landing-page",
 ];
