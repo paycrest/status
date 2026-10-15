@@ -6,7 +6,7 @@
 # Your changes will be overwritten when the Upptime template updates (by default, weekly)
 # Instead, change .upptimerc.yml configuration and the workflows will be generated accordingly.
 #
-# 🔼 Upptime @v1.41.0
+# 🔼 Upptime @v1.46.0
 # GitHub-powered open-source uptime monitor and status page by Anand Chowdhary
 
 # * Source: https://github.com/upptime/upptime
@@ -22,24 +22,18 @@ on:
     types: [response_time]
   workflow_dispatch:
 
-# Upptime ships a precompiled node-libcurl built for Node 20's ABI. GitHub now
-# forces actions onto Node 24, which can't load it. Pin the action runtime to
-# Node 20 until upstream Upptime publishes a Node 24-compatible build.
-env:
-  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: "true"
-
 jobs:
   release:
     name: Check status
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.GH_PAT || github.token }}
       - name: Update response time
-        uses: upptime/uptime-monitor@v1.41.0
+        uses: upptime/uptime-monitor@v1.46.0
         with:
           command: "response-time"
         env:
