@@ -13,12 +13,12 @@
     "time": 498,
     "timeDay": 0,
     "timeWeek": 0,
-    "timeMonth": 480,
+    "timeMonth": 0,
     "timeYear": 498,
     "dailyMinutesDown": {
-      "2026-07-03": 15,
+      "2026-06-29": 45,
       "2026-06-30": 16,
-      "2026-06-29": 45
+      "2026-07-03": 15
     }
   },
   {
@@ -27,18 +27,17 @@
     "icon": "https://icons.duckduckgo.com/ip3/noblocks.xyz.ico",
     "slug": "noblocks",
     "status": "up",
-    "uptime": "94.95%",
+    "uptime": "95.61%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "94.95%",
+    "uptimeYear": "95.61%",
     "time": 160,
     "timeDay": 0,
     "timeWeek": 0,
-    "timeMonth": 162,
+    "timeMonth": 0,
     "timeYear": 160,
     "dailyMinutesDown": {
-      "2026-08-11": 554,
       "2026-05-01": 27,
       "2026-04-30": 1440,
       "2026-04-29": 1440,
@@ -47,7 +46,8 @@
       "2026-04-26": 1440,
       "2026-04-25": 1440,
       "2026-04-24": 1440,
-      "2026-04-23": 448
+      "2026-04-23": 448,
+      "2026-08-11": 554
     }
   },
   {
@@ -56,15 +56,15 @@
     "icon": "https://icons.duckduckgo.com/ip3/rates.noblocks.xyz.ico",
     "slug": "noblocks-rates",
     "status": "up",
-    "uptime": "99.75%",
+    "uptime": "99.78%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "99.75%",
+    "uptimeYear": "99.78%",
     "time": 152,
     "timeDay": 0,
     "timeWeek": 0,
-    "timeMonth": 134,
+    "timeMonth": 0,
     "timeYear": 152,
     "dailyMinutesDown": {
       "2026-08-11": 554
@@ -75,17 +75,17 @@
     "url": "https://status.nibss-plc.com.ng/api/status/summary",
     "icon": "https://icons.duckduckgo.com/ip3/status.nibss-plc.com.ng.ico",
     "slug": "nibss-nip",
-    "status": "degraded",
+    "status": "up",
     "uptime": "100.00%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 0,
-    "timeDay": 0,
-    "timeWeek": 0,
-    "timeMonth": 0,
-    "timeYear": 0,
+    "time": 1017,
+    "timeDay": 1017,
+    "timeWeek": 1017,
+    "timeMonth": 1017,
+    "timeYear": 1017,
     "dailyMinutesDown": {}
   },
   {
@@ -94,15 +94,15 @@
     "icon": "https://icons.duckduckgo.com/ip3/app.paycrest.io.ico",
     "slug": "dashboard",
     "status": "up",
-    "uptime": "99.84%",
+    "uptime": "99.86%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "99.84%",
+    "uptimeYear": "99.86%",
     "time": 739,
     "timeDay": 0,
     "timeWeek": 0,
-    "timeMonth": 699,
+    "timeMonth": 0,
     "timeYear": 739,
     "dailyMinutesDown": {
       "2026-06-05": 360
@@ -122,7 +122,7 @@
     "time": 552,
     "timeDay": 0,
     "timeWeek": 0,
-    "timeMonth": 675,
+    "timeMonth": 0,
     "timeYear": 552,
     "dailyMinutesDown": {}
   }
