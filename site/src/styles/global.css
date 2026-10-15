@@ -211,6 +211,21 @@ a:hover {
   text-overflow: ellipsis;
 }
 
+.service-helper {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--fg-muted);
+  font-weight: 400;
+}
+
+.service-helper a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 3px;
+}
+
 .service-status {
   display: flex;
   align-items: center;

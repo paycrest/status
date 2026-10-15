@@ -54,6 +54,21 @@ const DISPLAY_ORDER = [
   "landing-page",
 ];
 
+/** Optional helper link shown under a service name (slug-keyed). */
+export interface ServiceHelperLink {
+  textBefore: string;
+  linkLabel: string;
+  href: string;
+}
+
+export const SERVICE_HELPER_LINKS: Record<string, ServiceHelperLink> = {
+  "nibss-nip": {
+    textBefore: "Want to see how transfers to banks are doing? Check ",
+    linkLabel: "NIBSS's live status",
+    href: "https://status.nibss-plc.com.ng/?system=nip",
+  },
+};
+
 function sortSites(sites: SiteSummary[]): SiteSummary[] {
   const rank = (slug: string) => {
     const i = DISPLAY_ORDER.indexOf(slug);

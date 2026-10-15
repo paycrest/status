@@ -1,6 +1,6 @@
 ---
 import type { SiteSummary } from "../lib/data";
-import { formatMs } from "../lib/data";
+import { formatMs, SERVICE_HELPER_LINKS } from "../lib/data";
 import UptimeBars from "./UptimeBars.astro";
 
 interface Props {
@@ -8,6 +8,7 @@ interface Props {
 }
 
 const { site } = Astro.props;
+const helperLink = SERVICE_HELPER_LINKS[site.slug];
 const statusText =
   site.status === "up"
     ? "Operational"
@@ -23,6 +24,18 @@ const displayUrl = isPaycrestDomain ? site.url : null;
     <div>
       <div class="service-name">{site.name}</div>
       {displayUrl && <div class="service-url">{displayUrl}</div>}
+      {helperLink && (
+        <p class="service-helper">
+          {helperLink.textBefore}
+          <a
+            href={helperLink.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {helperLink.linkLabel}
+          </a>
+        </p>
+      )}
     </div>
   </div>
   <div class={`service-status`}>
