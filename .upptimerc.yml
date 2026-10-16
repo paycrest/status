@@ -21,19 +21,20 @@ sites:
       - 200
       - 301
 
-  # NIBSS retired the old freshstatus page. The new Netis-powered page
-  # (https://status.nibss-plc.com.ng/?system=nip) is backed by this JSON API.
-  # NIP status: success -> up, warning -> degraded, failure -> down.
+  # NIBSS retired the old freshstatus page. The Netis dashboard
+  # (https://status.nibss-plc.com.ng/?system=nip) uses /api/status/systems:
+  # aggregate NIP metrics + per-minute timeline buckets — not /summary's
+  # institution-driven nip rollup. Upptime body rules cannot match that
+  # reliably (numeric metric values change every minute), so Uptime CI runs
+  # .github/scripts/reconcile-nibss-nip-status.mjs after each check pass.
   # The server sends an incomplete TLS chain (no Sectigo intermediate), so
   # peer verification fails in curl/Node; hence __dangerous__insecure.
   - name: NIBSS (NIP)
-    url: https://status.nibss-plc.com.ng/api/status/summary
+    url: https://status.nibss-plc.com.ng/api/status/systems?range=15m
     expectedStatusCodes:
       - 200
     __dangerous__insecure: true
-    __dangerous__body_down: '"system_id":"nip","status":"failure"'
-    __dangerous__body_degraded: '"system_id":"nip","status":"warning"'
-    __dangerous__body_down_if_text_missing: '"system_id":"nip","status":"'
+    __dangerous__body_down_if_text_missing: '"id":"nip","name":"NIBSS Instant Payment (NIP)","short_name":"NIP"'
 
   - name: Dashboard
     url: https://app.paycrest.io
