@@ -75,19 +75,20 @@
     "url": "https://status.nibss-plc.com.ng/api/status/summary",
     "icon": "https://icons.duckduckgo.com/ip3/status.nibss-plc.com.ng.ico",
     "slug": "nibss-nip",
-    "status": "down",
-    "uptime": "99.93%",
-    "uptimeDay": "99.93%",
-    "uptimeWeek": "99.93%",
-    "uptimeMonth": "99.93%",
-    "uptimeYear": "99.93%",
-    "time": 1110,
-    "timeDay": 1110,
-    "timeWeek": 1110,
-    "timeMonth": 1110,
-    "timeYear": 1110,
+    "status": "degraded",
+    "uptime": "68.51%",
+    "uptimeDay": "68.51%",
+    "uptimeWeek": "68.51%",
+    "uptimeMonth": "68.51%",
+    "uptimeYear": "68.51%",
+    "time": 1116,
+    "timeDay": 1116,
+    "timeWeek": 1116,
+    "timeMonth": 1116,
+    "timeYear": 1116,
     "dailyMinutesDown": {
-      "2026-10-15": 0
+      "2026-10-16": 17,
+      "2026-10-15": 74
     }
   },
   {
