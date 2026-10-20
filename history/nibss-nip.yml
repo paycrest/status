@@ -1,7 +1,7 @@
 url: https://status.nibss-plc.com.ng/api/status/systems?range=15m
-status: down
+status: up
 code: 200
-responseTime: 2589
-lastUpdated: 2026-10-20T12:52:00.992Z
+responseTime: 2208
+lastUpdated: 2026-10-20T13:00:14.649Z
 startTime: 2026-10-15T19:30:00.000Z
 generator: Upptime <https://github.com/upptime/upptime>
