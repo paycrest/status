@@ -56,19 +56,17 @@
     "icon": "https://icons.duckduckgo.com/ip3/rates.noblocks.xyz.ico",
     "slug": "noblocks-rates",
     "status": "up",
-    "uptime": "99.79%",
+    "uptime": "100.00%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "99.79%",
+    "uptimeYear": "100.00%",
     "time": 152,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
     "timeYear": 152,
-    "dailyMinutesDown": {
-      "2026-08-11": 554
-    }
+    "dailyMinutesDown": {}
   },
   {
     "name": "NIBSS (NIP)",
@@ -81,11 +79,11 @@
     "uptimeWeek": "95.63%",
     "uptimeMonth": "95.63%",
     "uptimeYear": "95.63%",
-    "time": 1647,
-    "timeDay": 1923,
-    "timeWeek": 1647,
-    "timeMonth": 1647,
-    "timeYear": 1647,
+    "time": 1666,
+    "timeDay": 2019,
+    "timeWeek": 1666,
+    "timeMonth": 1666,
+    "timeYear": 1666,
     "dailyMinutesDown": {
       "2026-10-16": 290,
       "2026-10-15": 74
