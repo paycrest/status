@@ -82,7 +82,7 @@
     "uptimeMonth": "95.64%",
     "uptimeYear": "95.64%",
     "time": 1666,
-    "timeDay": 2015,
+    "timeDay": 2011,
     "timeWeek": 1666,
     "timeMonth": 1666,
     "timeYear": 1666,
@@ -97,17 +97,19 @@
     "icon": "https://icons.duckduckgo.com/ip3/app.paycrest.io.ico",
     "slug": "dashboard",
     "status": "up",
-    "uptime": "100.00%",
+    "uptime": "99.86%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "100.00%",
+    "uptimeYear": "99.86%",
     "time": 739,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
     "timeYear": 739,
-    "dailyMinutesDown": {}
+    "dailyMinutesDown": {
+      "2026-06-05": 360
+    }
   },
   {
     "name": "Landing page",
