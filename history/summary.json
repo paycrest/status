@@ -56,17 +56,19 @@
     "icon": "https://icons.duckduckgo.com/ip3/rates.noblocks.xyz.ico",
     "slug": "noblocks-rates",
     "status": "up",
-    "uptime": "100.00%",
+    "uptime": "99.79%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "100.00%",
+    "uptimeYear": "99.79%",
     "time": 152,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
     "timeYear": 152,
-    "dailyMinutesDown": {}
+    "dailyMinutesDown": {
+      "2026-08-11": 554
+    }
   },
   {
     "name": "NIBSS (NIP)",
@@ -74,13 +76,13 @@
     "icon": "https://icons.duckduckgo.com/ip3/status.nibss-plc.com.ng.ico",
     "slug": "nibss-nip",
     "status": "up",
-    "uptime": "95.63%",
+    "uptime": "95.64%",
     "uptimeDay": "100.00%",
-    "uptimeWeek": "95.63%",
-    "uptimeMonth": "95.63%",
-    "uptimeYear": "95.63%",
+    "uptimeWeek": "95.64%",
+    "uptimeMonth": "95.64%",
+    "uptimeYear": "95.64%",
     "time": 1666,
-    "timeDay": 2019,
+    "timeDay": 2015,
     "timeWeek": 1666,
     "timeMonth": 1666,
     "timeYear": 1666,
@@ -95,19 +97,17 @@
     "icon": "https://icons.duckduckgo.com/ip3/app.paycrest.io.ico",
     "slug": "dashboard",
     "status": "up",
-    "uptime": "99.86%",
+    "uptime": "100.00%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "99.86%",
+    "uptimeYear": "100.00%",
     "time": 739,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
     "timeYear": 739,
-    "dailyMinutesDown": {
-      "2026-06-05": 360
-    }
+    "dailyMinutesDown": {}
   },
   {
     "name": "Landing page",
