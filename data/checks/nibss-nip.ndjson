@@ -1,12 +1,3 @@
-{"ts":"2026-10-19T16:45:37.461Z","status":"degraded","code":200,"responseTime":1702}
-{"ts":"2026-10-19T16:49:31.372Z","status":"up","code":200,"responseTime":1141}
-{"ts":"2026-10-19T21:18:13.947Z","status":"up","code":200,"responseTime":1893}
-{"ts":"2026-10-19T22:15:19.333Z","status":"degraded","code":200,"responseTime":1700}
-{"ts":"2026-10-19T22:27:46.388Z","status":"degraded","code":200,"responseTime":1696}
-{"ts":"2026-10-19T22:30:18.553Z","status":"degraded","code":200,"responseTime":1396}
-{"ts":"2026-10-19T22:38:31.317Z","status":"up","code":200,"responseTime":1369}
-{"ts":"2026-10-19T23:49:39.914Z","status":"degraded","code":200,"responseTime":2102}
-{"ts":"2026-10-19T23:56:59.443Z","status":"up","code":200,"responseTime":1869}
 {"ts":"2026-10-20T03:22:42.284Z","status":"degraded","code":200,"responseTime":1390}
 {"ts":"2026-10-20T03:30:19.681Z","status":"degraded","code":200,"responseTime":1196}
 {"ts":"2026-10-20T03:38:10.018Z","status":"degraded","code":200,"responseTime":1654}
@@ -99,3 +90,4 @@
 {"ts":"2026-10-21T15:45:15.163Z","status":"up","code":200,"responseTime":2325}
 {"ts":"2026-10-21T16:30:17.229Z","status":"up","code":200,"responseTime":1728}
 {"ts":"2026-10-21T16:45:11.742Z","status":"up","code":200,"responseTime":1256}
+{"ts":"2026-10-22T01:00:13.127Z","status":"degraded","code":200,"responseTime":1726}
