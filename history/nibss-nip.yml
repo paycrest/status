@@ -1,5 +1,5 @@
 url: https://status.nibss-plc.com.ng/api/status/systems?range=15m
-status: up
+status: down
 code: 200
 responseTime: 1653
 lastUpdated: 2026-11-02T05:33:56.008Z
