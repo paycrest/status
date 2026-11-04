@@ -1,7 +1,7 @@
 url: https://status.nibss-plc.com.ng/api/status/systems?range=15m
-status: degraded
+status: up
 code: 200
-responseTime: 1896
-lastUpdated: 2026-11-03T11:43:13.304Z
+responseTime: 1244
+lastUpdated: 2026-11-04T09:46:06.250Z
 startTime: 2026-10-15T19:30:00.000Z
 generator: Upptime <https://github.com/upptime/upptime>
