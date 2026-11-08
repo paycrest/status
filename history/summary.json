@@ -96,20 +96,20 @@
     "url": "https://app.paycrest.io",
     "icon": "https://icons.duckduckgo.com/ip3/app.paycrest.io.ico",
     "slug": "dashboard",
-    "status": "down",
+    "status": "up",
     "uptime": "99.87%",
-    "uptimeDay": "99.98%",
-    "uptimeWeek": "100.00%",
-    "uptimeMonth": "100.00%",
+    "uptimeDay": "99.59%",
+    "uptimeWeek": "99.94%",
+    "uptimeMonth": "99.99%",
     "uptimeYear": "99.87%",
     "time": 735,
-    "timeDay": 195,
-    "timeWeek": 195,
-    "timeMonth": 195,
+    "timeDay": 442,
+    "timeWeek": 442,
+    "timeMonth": 442,
     "timeYear": 735,
     "dailyMinutesDown": {
       "2026-06-05": 360,
-      "2026-11-08": 0
+      "2026-11-08": 6
     }
   },
   {
