@@ -27,11 +27,11 @@
     "icon": "https://icons.duckduckgo.com/ip3/noblocks.xyz.ico",
     "slug": "noblocks",
     "status": "up",
-    "uptime": "96.25%",
+    "uptime": "96.26%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "96.25%",
+    "uptimeYear": "96.26%",
     "time": 160,
     "timeDay": 0,
     "timeWeek": 0,
@@ -75,12 +75,12 @@
     "url": "https://status.nibss-plc.com.ng/api/status/systems?range=15m",
     "icon": "https://icons.duckduckgo.com/ip3/status.nibss-plc.com.ng.ico",
     "slug": "nibss-nip",
-    "status": "up",
-    "uptime": "99.17%",
-    "uptimeDay": "100.00%",
+    "status": "down",
+    "uptime": "99.18%",
+    "uptimeDay": "99.99%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "99.17%",
-    "uptimeYear": "99.17%",
+    "uptimeYear": "99.18%",
     "time": 1644,
     "timeDay": 1503,
     "timeWeek": 1496,
@@ -88,7 +88,8 @@
     "timeYear": 1644,
     "dailyMinutesDown": {
       "2026-10-16": 290,
-      "2026-10-15": 74
+      "2026-10-15": 74,
+      "2026-11-15": 0
     }
   },
   {
@@ -104,7 +105,7 @@
     "uptimeYear": "99.88%",
     "time": 735,
     "timeDay": 0,
-    "timeWeek": 442,
+    "timeWeek": 0,
     "timeMonth": 442,
     "timeYear": 735,
     "dailyMinutesDown": {
