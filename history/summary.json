@@ -75,7 +75,7 @@
     "url": "https://status.nibss-plc.com.ng/api/status/systems?range=15m",
     "icon": "https://icons.duckduckgo.com/ip3/status.nibss-plc.com.ng.ico",
     "slug": "nibss-nip",
-    "status": "up",
+    "status": "down",
     "uptime": "99.16%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
