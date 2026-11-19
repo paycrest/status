@@ -75,9 +75,9 @@
     "url": "https://status.nibss-plc.com.ng/api/status/systems?range=15m",
     "icon": "https://icons.duckduckgo.com/ip3/status.nibss-plc.com.ng.ico",
     "slug": "nibss-nip",
-    "status": "up",
+    "status": "down",
     "uptime": "99.26%",
-    "uptimeDay": "100.00%",
+    "uptimeDay": "99.99%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.26%",
@@ -88,7 +88,8 @@
     "timeYear": 1643,
     "dailyMinutesDown": {
       "2026-10-16": 290,
-      "2026-10-15": 74
+      "2026-10-15": 74,
+      "2026-11-19": 0
     }
   },
   {
